@@ -23,60 +23,39 @@
         <div class="row container d-flex justify-content-center">
             <div class="col-lg-8 grid-margin stretch-card">
               <!--    search_bar start-->
-          <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search Another place " aria-label="Search"
+           <form action="" method="POST">
+               {% csrf_token %}
+              <div class="input-group">
+        <input type="search" class="form-control rounded" name="city_add" placeholder="Search Another place " aria-label="Search"
           aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
+        <button type="submit" class="btn btn-outline-primary">search</button>
         </div>
+                 </form>
          <!--    search_bar End -->
                 <!--weather card-->
                 <div class="card card-weather">
                     <div class="card-body">
                         <div class="weather-date-location">
                              <div class="weather-date-location">
-                         <div class="city"><small>CITY :</small> London</div>
-                        </div>
-                            <h3>Friday</h3>
-                            <p class="text-gray"> <span class="weather-date">25 March, 2019</span> <span class="weather-location">Sydney, Australia</span> </p>
-                        </div>
+                         <div class="city"><small>CITY :</small> {{weather.City}}  </div>
+
 
                         <div class="weather-data d-flex">
                             <div class="mr-auto">
-                                <h4 class="display-3">32 <span class="symbol">°</span>C</h4>
-                                <p> Cloudy </p>
+                                <h4 class="display-3"> {{weather.temperature}} <span class="symbol">°</span>F</h4>
                             </div>
+                        </div>
+                             </div>
+                            <p class="text-gray"> <span class="weather-date">{{weather.details}} </span> <span class="weather-location"> Sydney, Australia </span> </p>
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <div class="d-flex weakly-weather">
-                            <div class="weakly-weather-item">
-                                <p class="mb-0"> Sun </p> <i class="mdi mdi-weather-cloudy"></i>
-                                <p class="mb-0"> 30° </p>
+                              <div class="weakly-weather-item text-center">
+<!--                                <p class="mb-1">  </p> <i class="mdi mdi-weather-pouring"></i>-->
+                                  <img src="http://openweathermap.org/img/w/{{weather.icon}}.png" style="width:40px; height:40px">
                             </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Mon </p> <i class="mdi mdi-weather-hail"></i>
-                                <p class="mb-0"> 31° </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Tue </p> <i class="mdi mdi-weather-partlycloudy"></i>
-                                <p class="mb-0"> 28° </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Wed </p> <i class="mdi mdi-weather-pouring"></i>
-                                <p class="mb-0"> 30° </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Thu </p> <i class="mdi mdi-weather-pouring"></i>
-                                <p class="mb-0"> 29° </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Fri </p> <i class="mdi mdi-weather-snowy-rainy"></i>
-                                <p class="mb-0"> 31° </p>
-                            </div>
-                            <div class="weakly-weather-item">
-                                <p class="mb-1"> Sat </p> <i class="mdi mdi-weather-snowy"></i>
-                                <p class="mb-0"> 32° </p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
